@@ -6,7 +6,7 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.11.2
+      jupytext_version: 1.11.1
   kernelspec:
     display_name: Python 3
     language: python
@@ -26,7 +26,7 @@ from IPython.display import display
 Choisir les paramètres de recherche des stations qui seront retenues pour l'étude, puis appuyer sur Run Interact.
 
 ```python
-interact_manual(sauvegarde_locale_stations, Nech = IntSlider(min=100,max=4000),Npiezmin=IntSlider(min=0,max=2000),Npage=IntSlider(min=1,max=5))
+interact_manual(sauvegarde_locale, Nech = IntSlider(min=1,max=4000,value=100),Npiezmin=IntSlider(min=0,max=2000),Npage=IntSlider(min=1,max=5))
 ```
 
 # Visualisation des stations :
@@ -69,13 +69,13 @@ Analyse de la chronique :
 interact_manual(show_spectrum,
          table = fixed(newdf),
          filter = ['none','passe_bas'],
-         f_coupure = FloatSlider(min=0,max=0.1, step=0.001)
+         f_coupure = FloatSlider(min=0,max=0.1, value=0.1, step=0.00001,readout_format='-5f')
         )
 ```
 
 ```python
 df_modified=newdf
-interact_manual(filtrage, table = fixed(df_modified), filter=fixed('passe_bas'),freq_coupure = FloatSlider(min=0,max=0.200,value=0.2,step=0.001)
+interact_manual(filtrage, table = fixed(df_modified), filter=fixed('passe_bas'),freq_coupure = FloatSlider(min=0,max=0.100,value=0.05,step=0.00001,readout_format='.5f')
 )
 ```
 
